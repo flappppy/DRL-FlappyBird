@@ -2,6 +2,13 @@ import flappy
 import pygame
 from pygame.locals import *
 
+'''
+state is defined as below：
+
+
+'''
+
+
 class Agent:
 
     def play(self):

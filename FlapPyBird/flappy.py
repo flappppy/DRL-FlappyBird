@@ -9,14 +9,14 @@ from pygame.locals import *
 
 
 #config speed
-ACCELERATE=0
-ORIGINAL_SPEED=-20
+ACCELERATE=0.5
+ORIGINAL_SPEED=-4
 ###
 
 FPS = 30
 SCREENWIDTH  = 288
 SCREENHEIGHT = 512
-PIPEGAPSIZE  = 100 # gap between upper and lower part of pipe
+PIPEGAPSIZE  = 110 # gap between upper and lower part of pipe
 BASEY        = SCREENHEIGHT * 0.79
 # image, sound and hitmask  dicts
 IMAGES, SOUNDS, HITMASKS = {}, {}, {}
@@ -232,7 +232,16 @@ def mainGame(movementInfo,agent):
     playerFlapped = False # True when player flaps
 
     #TODO init
-    currState={}
+    currState={
+        'isDead':False,
+        'upperPipes': upperPipes,
+        'lowerPipes': lowerPipes,
+        'score': score,
+        'playerVelY': playerVelY,
+        'playerRot': playerRot,
+        'pipeVelX':pipeVelX,
+        'playerAccY':playerAccY
+    }
 
 
     nextState={}
@@ -254,6 +263,18 @@ def mainGame(movementInfo,agent):
         crashTest = checkCrash({'x': playerx, 'y': playery, 'index': playerIndex},
                                upperPipes, lowerPipes)
         if crashTest[0]:
+            nextState = {
+                'isDead': True,
+                'upperPipes': upperPipes,
+                'lowerPipes': lowerPipes,
+                'score': score,
+                'playerVelY': playerVelY,
+                'playerRot': playerRot,
+                'pipeVelX': pipeVelX,
+                'playerAccY': playerAccY,
+                'basex': basex
+            }
+            agent.onStateChange(currState,actionList,nextState)
             return {
                 'y': playery,
                 'groundCrash': crashTest[1],
@@ -306,18 +327,21 @@ def mainGame(movementInfo,agent):
             randomPipe=random.random()
             pipeNum=1
             if len(upperPipes)==0:
-                if randomPipe>0.3:
+                if randomPipe>0.4:
                     pipeNum=2
                 else:
-                    if randomPipe<0.05:
+                    if randomPipe<0.03:
                         pipeNum=3
                     else:
                         pipeNum=1
 
+
+            currpipeX=0
             for i in range(pipeNum):
                 newPipe = getRandomPipe()
-                upperPipes.append(newPipe[0])
-                lowerPipes.append(newPipe[1])
+                upperPipes.append({'x':newPipe[0]['x']+currpipeX,'y':newPipe[0]['y']})
+                lowerPipes.append({'x': newPipe[1]['x'] + currpipeX, 'y': newPipe[1]['y']})
+                currpipeX+=220
 
         # remove first pipe if its out of the screen
         if len(upperPipes)>0 and upperPipes[0]['x'] < -IMAGES['pipe'][0].get_width():
@@ -345,11 +369,20 @@ def mainGame(movementInfo,agent):
 
 
         #calculate new state, manage old new state
-        newState={}
-        agent.onStateChange(currState,actionList,newState)
-        currState=newState
+        nextState = {
+            'isDead': False,
+            'upperPipes': upperPipes,
+            'lowerPipes': lowerPipes,
+            'score': score,
+            'playerVelY': playerVelY,
+            'playerRot': playerRot,
+            'pipeVelX': pipeVelX,
+            'playerAccY': playerAccY,
+            'basex': basex
+        }
+        agent.onStateChange(currState,actionList,nextState)
+        currState=nextState
         ##
-
 
         pygame.display.update()
         FPSCLOCK.tick(FPS)

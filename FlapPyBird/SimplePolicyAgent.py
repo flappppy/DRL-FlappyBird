@@ -2,9 +2,6 @@ from Agent import Agent
 import pygame
 from pygame.locals import *
 
-import time
-
-
 class SimplePolicyAgent(Agent):
     def __init__(self):
         self.count=0

@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c71e7344-a765-4823-a116-71d07f2dbcfd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ManualAgent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SimplePolicyAgent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/start.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/FlapPyBird-master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FlapPyBird-master.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimplePolicyAgent.py" beforeDir="false" afterPath="$PROJECT_DIR$/SimplePolicyAgent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flappy.py" beforeDir="false" afterPath="$PROJECT_DIR$/flappy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/start.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/FlapPyBird$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1554727745590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FlapPyBird$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1554736863159" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1221277411">
@@ -64,11 +61,13 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="md" value="2" />
+          <entry key="png" value="2" />
           <entry key="py" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="Image" value="2" />
           <entry key="Markdown" value="2" />
           <entry key="Python" value="9" />
         </counts>
@@ -77,14 +76,14 @@
         <counts>
           <entry key="dummy" value="2" />
           <entry key="md" value="27" />
-          <entry key="py" value="1703" />
+          <entry key="py" value="1927" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Markdown" value="27" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="1703" />
+          <entry key="Python" value="1927" />
         </counts>
       </usages-collector>
     </session>
@@ -94,20 +93,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
+            <state>
               <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flappy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="237" column="16" lean-forward="true" selection-start-line="237" selection-start-column="16" selection-end-line="237" selection-end-column="16" />
+            <state relative-caret-position="56">
+              <caret line="333" column="33" lean-forward="true" selection-start-line="333" selection-start-column="33" selection-end-line="333" selection-end-column="33" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
-                <marker date="1554727812202" expanded="true" signature="17038:17056" ph="..." />
+                <marker date="1554736826647" expanded="true" signature="18194:18212" ph="..." />
               </folding>
             </state>
           </provider>
@@ -116,14 +115,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Agent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="132">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <marker date="1554727427217" expanded="true" signature="69:70" ph="..." />
-                <marker date="1554727427217" expanded="true" signature="69:75" ph="..." />
-                <marker date="1554727427217" expanded="true" signature="90:331" ph="..." />
-                <marker date="1554727427217" expanded="true" signature="256:331" ph="..." />
+                <marker date="1554735016476" expanded="true" signature="108:109" ph="..." />
+                <marker date="1554735016476" expanded="true" signature="108:114" ph="..." />
+                <marker date="1554735016476" expanded="true" signature="129:370" ph="..." />
+                <marker date="1554735016476" expanded="true" signature="295:370" ph="..." />
               </folding>
             </state>
           </provider>
@@ -132,8 +131,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SimplePolicyAgent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="154">
+              <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -141,7 +140,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/start.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="176">
@@ -183,6 +182,11 @@
       <find>K_SPACE</find>
       <find>pipeVelX</find>
       <find>[1]</find>
+      <find>playerIndexGen</find>
+      <find>basex</find>
+      <find>playerx</find>
+      <find>rand</find>
+      <find>random</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -195,11 +199,11 @@
         <option value="$PROJECT_DIR$/scene.py" />
         <option value="$PROJECT_DIR$/Scene.py" />
         <option value="$PROJECT_DIR$/agent.py" />
-        <option value="$PROJECT_DIR$/start.py" />
-        <option value="$PROJECT_DIR$/SimplePolicyAgent.py" />
         <option value="$PROJECT_DIR$/ManualAgent.py" />
+        <option value="$PROJECT_DIR$/SimplePolicyAgent.py" />
         <option value="$PROJECT_DIR$/Agent.py" />
         <option value="$PROJECT_DIR$/flappy.py" />
+        <option value="$PROJECT_DIR$/start.py" />
       </list>
     </option>
   </component>
@@ -228,6 +232,17 @@
             <path>
               <item name="FlapPyBird" type="b2602c69:ProjectViewProjectNode" />
               <item name="FlapPyBird" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FlapPyBird" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FlapPyBird" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FlapPyBird" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FlapPyBird" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="sprites" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -302,13 +317,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17831326" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.37710842" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -369,7 +385,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
+        <state>
           <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
         </state>
       </provider>
@@ -385,26 +401,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Agent.py">
+    <entry file="file://$PROJECT_DIR$/SimplePolicyAgent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="154">
+          <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
-            <marker date="1554727427217" expanded="true" signature="69:70" ph="..." />
-            <marker date="1554727427217" expanded="true" signature="69:75" ph="..." />
-            <marker date="1554727427217" expanded="true" signature="90:331" ph="..." />
-            <marker date="1554727427217" expanded="true" signature="256:331" ph="..." />
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SimplePolicyAgent.py">
+    <entry file="file://$PROJECT_DIR$/Agent.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="132">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
           <folding>
-            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
+            <marker date="1554735016476" expanded="true" signature="108:109" ph="..." />
+            <marker date="1554735016476" expanded="true" signature="108:114" ph="..." />
+            <marker date="1554735016476" expanded="true" signature="129:370" ph="..." />
+            <marker date="1554735016476" expanded="true" signature="295:370" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/sprites/pipe-green.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/sprites/pipe-red.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flappy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="333" column="33" lean-forward="true" selection-start-line="333" selection-start-column="33" selection-end-line="333" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+            <marker date="1554736826647" expanded="true" signature="18194:18212" ph="..." />
           </folding>
         </state>
       </provider>
@@ -415,17 +448,6 @@
           <caret line="8" column="12" lean-forward="true" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flappy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="237" column="16" lean-forward="true" selection-start-line="237" selection-start-column="16" selection-end-line="237" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-            <marker date="1554727812202" expanded="true" signature="17038:17056" ph="..." />
           </folding>
         </state>
       </provider>
