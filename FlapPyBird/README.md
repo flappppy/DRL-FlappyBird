@@ -14,9 +14,9 @@ How-to (as tested on MacOS)
 
 4. In the root directory run
 
+play manually:
 ```bash
-$ pipenv install
-$ pipenv run python flappy.py
+python flappy.py
 ```
 
 5. Use <kbd>&uarr;</kbd> or <kbd>Space</kbd> key to play and <kbd>Esc</kbd> to close the game.

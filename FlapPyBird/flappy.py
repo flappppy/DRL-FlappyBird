@@ -6,6 +6,13 @@ import pygame
 from pygame.locals import *
 
 
+
+
+#config speed
+ACCELERATE=0
+ORIGINAL_SPEED=-20
+###
+
 FPS = 30
 SCREENWIDTH  = 288
 SCREENHEIGHT = 512
@@ -55,7 +62,7 @@ except NameError:
     xrange = range
 
 
-def main():
+def main(agent):
     global SCREEN, FPSCLOCK
     pygame.init()
     FPSCLOCK = pygame.time.Clock()
@@ -130,7 +137,7 @@ def main():
         )
 
         movementInfo = showWelcomeAnimation()
-        crashInfo = mainGame(movementInfo)
+        crashInfo = mainGame(movementInfo,agent)
         showGameOverScreen(crashInfo)
 
 
@@ -187,7 +194,7 @@ def showWelcomeAnimation():
         FPSCLOCK.tick(FPS)
 
 
-def mainGame(movementInfo):
+def mainGame(movementInfo,agent):
     score = playerIndex = loopIter = 0
     playerIndexGen = movementInfo['playerIndexGen']
     playerx, playery = int(SCREENWIDTH * 0.2), movementInfo['playery']
@@ -211,7 +218,7 @@ def mainGame(movementInfo):
         {'x': SCREENWIDTH + 200 + (SCREENWIDTH / 2), 'y': newPipe2[1]['y']},
     ]
 
-    pipeVelX = -4
+    pipeVelX = ORIGINAL_SPEED
 
     # player velocity, max velocity, downward accleration, accleration on flap
     playerVelY    =  -9   # player's velocity along Y, default same as playerFlapped
@@ -224,17 +231,24 @@ def mainGame(movementInfo):
     playerFlapAcc =  -9   # players speed on flapping
     playerFlapped = False # True when player flaps
 
+    #TODO init
+    currState={}
+
+
+    nextState={}
 
     while True:
-        for event in pygame.event.get():
-            if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
+        actionList=agent.getNextAction(currState)
+        for event in actionList:
+            if event==-1:
                 pygame.quit()
                 sys.exit()
-            if event.type == KEYDOWN and (event.key == K_SPACE or event.key == K_UP):
+            if event==1:
                 if playery > -2 * IMAGES['player'][0].get_height():
                     playerVelY = playerFlapAcc
                     playerFlapped = True
                     SOUNDS['wing'].play()
+                    pipeVelX -= ACCELERATE
 
         # check for crash here
         crashTest = checkCrash({'x': playerx, 'y': playery, 'index': playerIndex},
@@ -255,7 +269,7 @@ def mainGame(movementInfo):
         playerMidPos = playerx + IMAGES['player'][0].get_width() / 2
         for pipe in upperPipes:
             pipeMidPos = pipe['x'] + IMAGES['pipe'][0].get_width() / 2
-            if pipeMidPos <= playerMidPos < pipeMidPos + 4:
+            if pipeMidPos <= playerMidPos < pipeMidPos - pipeVelX:
                 score += 1
                 SOUNDS['point'].play()
 
@@ -287,13 +301,26 @@ def mainGame(movementInfo):
             lPipe['x'] += pipeVelX
 
         # add new pipe when first pipe is about to touch left of screen
-        if 0 < upperPipes[0]['x'] < 5:
-            newPipe = getRandomPipe()
-            upperPipes.append(newPipe[0])
-            lowerPipes.append(newPipe[1])
+
+        if len(upperPipes)==0 or 0 < upperPipes[0]['x'] < 5:
+            randomPipe=random.random()
+            pipeNum=1
+            if len(upperPipes)==0:
+                if randomPipe>0.3:
+                    pipeNum=2
+                else:
+                    if randomPipe<0.05:
+                        pipeNum=3
+                    else:
+                        pipeNum=1
+
+            for i in range(pipeNum):
+                newPipe = getRandomPipe()
+                upperPipes.append(newPipe[0])
+                lowerPipes.append(newPipe[1])
 
         # remove first pipe if its out of the screen
-        if upperPipes[0]['x'] < -IMAGES['pipe'][0].get_width():
+        if len(upperPipes)>0 and upperPipes[0]['x'] < -IMAGES['pipe'][0].get_width():
             upperPipes.pop(0)
             lowerPipes.pop(0)
 
@@ -312,9 +339,17 @@ def mainGame(movementInfo):
         visibleRot = playerRotThr
         if playerRot <= playerRotThr:
             visibleRot = playerRot
-        
+
         playerSurface = pygame.transform.rotate(IMAGES['player'][playerIndex], visibleRot)
         SCREEN.blit(playerSurface, (playerx, playery))
+
+
+        #calculate new state, manage old new state
+        newState={}
+        agent.onStateChange(currState,actionList,newState)
+        currState=newState
+        ##
+
 
         pygame.display.update()
         FPSCLOCK.tick(FPS)
@@ -482,6 +517,12 @@ def getHitmask(image):
         for y in xrange(image.get_height()):
             mask[x].append(bool(image.get_at((x,y))[3]))
     return mask
+
+
+
+
+def startWithAgent(agent):
+    main(agent)
 
 if __name__ == '__main__':
     main()
