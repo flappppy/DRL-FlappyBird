@@ -341,7 +341,7 @@ def mainGame(movementInfo,agent):
                 newPipe = getRandomPipe()
                 upperPipes.append({'x':newPipe[0]['x']+currpipeX,'y':newPipe[0]['y']})
                 lowerPipes.append({'x': newPipe[1]['x'] + currpipeX, 'y': newPipe[1]['y']})
-                currpipeX+=220
+                currpipeX+=420
 
         # remove first pipe if its out of the screen
         if len(upperPipes)>0 and upperPipes[0]['x'] < -IMAGES['pipe'][0].get_width():
