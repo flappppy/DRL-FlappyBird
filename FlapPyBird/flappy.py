@@ -5,15 +5,15 @@ import sys
 import pygame
 from pygame.locals import *
 
-
+DISPLAY=True
 
 
 #config speed
-ACCELERATE=0.5
+ACCELERATE=0
 ORIGINAL_SPEED=-4
 ###
 
-FPS = 30
+FPS = 60
 SCREENWIDTH  = 288
 SCREENHEIGHT = 512
 PIPEGAPSIZE  = 110 # gap between upper and lower part of pipe
@@ -138,7 +138,7 @@ def main(agent):
 
         movementInfo = showWelcomeAnimation()
         crashInfo = mainGame(movementInfo,agent)
-        showGameOverScreen(crashInfo)
+        # showGameOverScreen(crashInfo)
 
 
 def showWelcomeAnimation():
@@ -161,6 +161,12 @@ def showWelcomeAnimation():
 
     # player shm for up-down motion on welcome screen
     playerShmVals = {'val': 0, 'dir': 1}
+
+    return {
+        'playery': playery + playerShmVals['val'],
+        'basex': basex,
+        'playerIndexGen': playerIndexGen,
+    }
 
     while True:
         for event in pygame.event.get():
@@ -190,8 +196,9 @@ def showWelcomeAnimation():
         SCREEN.blit(IMAGES['message'], (messagex, messagey))
         SCREEN.blit(IMAGES['base'], (basex, BASEY))
 
-        pygame.display.update()
-        FPSCLOCK.tick(FPS)
+        if DISPLAY:
+            pygame.display.update()
+            FPSCLOCK.tick(FPS)
 
 
 def mainGame(movementInfo,agent):
@@ -231,7 +238,6 @@ def mainGame(movementInfo,agent):
     playerFlapAcc =  -9   # players speed on flapping
     playerFlapped = False # True when player flaps
 
-    #TODO init
     currState={
         'isDead':False,
         'upperPipes': upperPipes,
@@ -240,7 +246,10 @@ def mainGame(movementInfo,agent):
         'playerVelY': playerVelY,
         'playerRot': playerRot,
         'pipeVelX':pipeVelX,
-        'playerAccY':playerAccY
+        'playerAccY':playerAccY,
+        'basex': basex,
+        'playerx': playerx,
+        'playery': playery
     }
 
 
@@ -256,7 +265,7 @@ def mainGame(movementInfo,agent):
                 if playery > -2 * IMAGES['player'][0].get_height():
                     playerVelY = playerFlapAcc
                     playerFlapped = True
-                    SOUNDS['wing'].play()
+                    #SOUNDS['wing'].play()
                     pipeVelX -= ACCELERATE
 
         # check for crash here
@@ -272,7 +281,9 @@ def mainGame(movementInfo,agent):
                 'playerRot': playerRot,
                 'pipeVelX': pipeVelX,
                 'playerAccY': playerAccY,
-                'basex': basex
+                'basex': basex,
+                'playerx': playerx,
+                'playery': playery
             }
             agent.onStateChange(currState,actionList,nextState)
             return {
@@ -292,7 +303,7 @@ def mainGame(movementInfo,agent):
             pipeMidPos = pipe['x'] + IMAGES['pipe'][0].get_width() / 2
             if pipeMidPos <= playerMidPos < pipeMidPos - pipeVelX:
                 score += 1
-                SOUNDS['point'].play()
+                # SOUNDS['point'].play()
 
         # playerIndex basex change
         if (loopIter + 1) % 3 == 0:
@@ -378,14 +389,17 @@ def mainGame(movementInfo,agent):
             'playerRot': playerRot,
             'pipeVelX': pipeVelX,
             'playerAccY': playerAccY,
-            'basex': basex
+            'basex': basex,
+            'playerx':playerx,
+            'playery': playery
         }
         agent.onStateChange(currState,actionList,nextState)
         currState=nextState
         ##
 
-        pygame.display.update()
-        FPSCLOCK.tick(FPS)
+        if DISPLAY:
+            pygame.display.update()
+            FPSCLOCK.tick(FPS)
 
 
 def showGameOverScreen(crashInfo):
@@ -447,8 +461,9 @@ def showGameOverScreen(crashInfo):
         SCREEN.blit(playerSurface, (playerx,playery))
         SCREEN.blit(IMAGES['gameover'], (50, 180))
 
-        FPSCLOCK.tick(FPS)
-        pygame.display.update()
+        if DISPLAY:
+            pygame.display.update()
+            FPSCLOCK.tick(FPS)
 
 
 def playerShm(playerShm):
