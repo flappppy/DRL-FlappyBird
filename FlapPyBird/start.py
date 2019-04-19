@@ -1,9 +1,15 @@
 from ManualAgent import ManualAgent
+from DeepAgent import DeepAgent
 from SimplePolicyAgent import SimplePolicyAgent
 
+from PredictAgent import PredictAgent
 
-# agent=ManualAgent()
+
+# agent=SimplePolicyAgent()
 # agent.play()
 #
-agent=SimplePolicyAgent()
+# agent=DeepAgent()
+# agent.play()
+
+agent=PredictAgent()
 agent.play()
