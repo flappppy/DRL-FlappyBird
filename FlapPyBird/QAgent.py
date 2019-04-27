@@ -4,7 +4,6 @@ class Agent:
     def __init__(self):
         self.dumpNumber = 30
         self.gameCount = 0
-        self.reward = [1, -1000]
         self.discount = 1.0
         self.learningRate = 0.5
         self.load_qvalues()
@@ -43,13 +42,13 @@ class Agent:
             act = i[1]
             estimate = i[2]
 
-            if t == 1 or t == 2:
-                reward = self.reward[1]
+            if t <=2:
+                reward = -1000
             elif flag and act:
-                reward = self.reward[1]
+                reward = -1000
                 flag = False
             else:
-                reward = self.reward[0]
+                reward = 1
 
             self.qvalues[state][act] = (1-self.learningRate) * (self.qvalues[state][act]) + \
                                        self.learningRate * ( reward + self.discount * max(self.qvalues[estimate]) )
