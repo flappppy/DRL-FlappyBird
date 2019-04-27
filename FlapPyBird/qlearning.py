@@ -1,6 +1,7 @@
 from itertools import cycle
 import random
 import sys
+import json
 from Agentcopy import Agent
 import pygame
 from pygame.locals import *
@@ -14,7 +15,7 @@ agent = Agent()
 ORIGINAL_SPEED=-4
 ###
 
-FPS = 30
+FPS = 60
 SCREENWIDTH  = 288
 SCREENHEIGHT = 512
 PIPEGAPSIZE  = 110 # gap between upper and lower part of pipe
@@ -23,6 +24,7 @@ BASEY        = SCREENHEIGHT * 0.79
 IMAGES, SOUNDS, HITMASKS = {}, {}, {}
 
 # list of all possible players (tuple of 3 positions of flap)
+'''
 PLAYERS_LIST = (
     # red bird
     (
@@ -43,7 +45,14 @@ PLAYERS_LIST = (
         'assets/sprites/yellowbird-downflap.png',
     ),
 )
-
+'''
+PLAYERS_LIST = (
+    (
+        'assets/sprites/piggy.png',
+        'assets/sprites/piggy_1.png',
+        'assets/sprites/piggy_2.png',
+    ),
+)
 # list of backgrounds
 BACKGROUNDS_LIST = (
     'assets/sprites/background-day.png',
@@ -111,6 +120,9 @@ def main():
     SOUNDS['swoosh'] = pygame.mixer.Sound('assets/audio/swoosh' + soundExt)
     SOUNDS['wing']   = pygame.mixer.Sound('assets/audio/wing' + soundExt)
 
+    game_count = 0
+    print_info = {}
+
     while True:
         # select random background sprites
         randBg = random.randint(0, len(BACKGROUNDS_LIST) - 1)
@@ -145,9 +157,18 @@ def main():
             getHitmask(IMAGES['player'][2]),
         )
 
+        game_count = game_count+1
+
         movementInfo = showWelcomeAnimation()
         crashInfo = mainGame(movementInfo)
         showGameOverScreen(crashInfo)
+        print_info[game_count] = crashInfo['score']
+
+        if game_count%20 == 0:
+            files = open('record.json','w')
+            json.dump(print_info,files)
+            files.close()
+
 
 
 def showWelcomeAnimation():
@@ -270,7 +291,7 @@ def mainGame(movementInfo):
         crashTest = checkCrash({'x': playerx, 'y': playery, 'index': playerIndex},
                                upperPipes, lowerPipes)
         if crashTest[0]:
-            agent.update_scores(dump_qvalues=False)
+            agent.update_scores(dump_qvalues=True)
             return {
                 'y': playery,
                 'groundCrash': crashTest[1],

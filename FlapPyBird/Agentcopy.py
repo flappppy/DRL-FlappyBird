@@ -4,6 +4,7 @@ state is defined as below：
 
 '''
 import json
+import random
 
 class Agent:
     # action leads to the new state
@@ -18,6 +19,7 @@ class Agent:
         self.last_state = "420_240_0"
         self.last_action = 0
         self.moves = []
+        self.qvalues[str(self.last_state)] = [0,0]
 
     def load_qvalues(self):
         """
@@ -37,12 +39,19 @@ class Agent:
         """
         state = self.map_state(xdif, ydif, vel)
 
+        if str(state) not in self.qvalues:
+            self.qvalues[str(state)] = [0,0]
+
         self.moves.append(
             (self.last_state, self.last_action, state)
         )  # Add the experience to the history
 
         self.last_state = state  # Update the last_state with the current state
-
+        '''
+        if random.random() < 0.008:
+            self.last_action = round(random.random())
+            return self.last_action
+        '''
         if self.qvalues[state][0] >= self.qvalues[state][1]:
             self.last_action = 0
             return 0
