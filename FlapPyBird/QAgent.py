@@ -29,7 +29,7 @@ class Agent:
     # get action from state
     def act(self, cs):
         ## annoted when testing
-        if not istrain:
+        if not self.istrain:
             if random.random() < 0.008:
                 self.lAction = round(random.random())
                 return self.lAction
