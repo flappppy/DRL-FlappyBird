@@ -384,7 +384,7 @@ stateToGrid(self,x, y, x1, y1, x2, y2, v) &preprocess the states\\
 \end{tabular}
 \end{table}
 
-\indent We first let the QAgent with ${\epsilon}$  play the game 3300 times. When the QAgent chooses random actions, the QAgent may die. So we set the ${\epsilon}$  is 0.008. Because of the randomness, the performance while training is not so good. Figure 3 shows the performance while training. We can see that the scores slowly increases while playing. The maximal score is 98 and the average score is 5.
+\indent We first let the QAgent with epsilon ${\epsilon}$  play the game 3300 times. When the QAgent chooses random actions, the QAgent may die. So we set the epsilon ${\epsilon}$  is 0.008. Because of the randomness, the performance while training is not so good. Figure 3 shows the performance while training. We can see that the scores slowly increases while playing. The maximal score is 98 and the average score is 5.
 
 \begin{figure}[!t]
 \centering
@@ -393,7 +393,7 @@ stateToGrid(self,x, y, x1, y1, x2, y2, v) &preprocess the states\\
 \label{fig3}
 \end{figure}
 
-\indent After we train the QAgent with ${\epsilon}$ , we use QAgent which totally depend on the experience to play the game. The result is shown in Figure 4.  After 120 games, the average score is 635 which is much higher than 98. The maximal score is 4171 which shows excellent performance of QAgent.
+\indent After we train the QAgent with epsilon ${\epsilon}$ , we use QAgent which totally depend on the experience to play the game. The result is shown in Figure 4.  After 120 games, the average score is 635 which is much higher than 98. The maximal score is 4171 which shows excellent performance of QAgent.
 
 \begin{figure}[!t]
 \centering
@@ -488,7 +488,7 @@ trainFromBuffer(self) & train the model\\
 \end{tabular}
 \end{table}
 
-In DDQN, we set the epsilon is 0.2 at first and the epsilon will minus 0.001 when the DeepAgent died with a score higher than 0. Eventually, the epsilon will decay to 0.001. We let the DeepAgent play the game 1292 times. Figure 5 shows the performance while training.
+In DDQN, we set the epsilon ${\epsilon}$ is 0.2 at first and the epsilon ${\epsilon}$ will minus 0.001 when the DeepAgent died with a score higher than 0. Eventually, the epsilon ${\epsilon}$ will decay to 0.001. We let the DeepAgent play the game 1292 times. Figure 5 shows the performance while training.
 
 \begin{figure}[!t]
 \centering
@@ -498,7 +498,7 @@ In DDQN, we set the epsilon is 0.2 at first and the epsilon will minus 0.001 whe
 \end{figure}
 
 
-Due to the effectiveness of epsilon, the DeepAgent shows a really bad performance at the beginning. After playing 800 times, the DeepAgent begin to get more scores. In the last 200 iterations,  the average score is 72. In DDQN, the input feature dimension is 4 and neural network layers have at most 64 hidden units which mean we have plenty of parameters to train. So the neural network needs much more time to train.
+Due to the effectiveness of epsilon ${\epsilon}$, the DeepAgent shows a really bad performance at the beginning. After playing 800 times, the DeepAgent begin to get more scores. In the last 200 iterations,  the average score is 72. In DDQN, the input feature dimension is 4 and neural network layers have at most 64 hidden units which mean we have plenty of parameters to train. So the neural network needs much more time to train.
 
 
 
