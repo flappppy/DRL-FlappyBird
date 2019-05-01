@@ -310,7 +310,7 @@ Initialize: define targetNetwork which is the same as trainNetwork with weight $
 \ForEach{episode ${e\in [1,2,...400]}$}{
 when state changes, get bird’s old state ${s}$, action ${a}$, new state ${s'}$, ${score}$ and exploreTime.\\
 ${reward = score }$\\
-\If{ydif in new state ${>}$ 250}{${reward = reward -200}$}
+\If{girdY ${>}$ 250}{${reward = reward -200}$}
 \eIf{the bird is dead} 
 	{${\theta^- = \theta}$\\put[${s}$, ${a}$, ${reward-1000}$,${s'}$,Alive or Dead] into ReplayBuffer}
 	{put[${s}$, ${a}$, ${reward}$,${s'}$,Alive or Dead] into ReplayBuffer}
