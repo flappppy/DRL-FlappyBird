@@ -18,7 +18,8 @@ class PredictAgent(Agent):
         return
 
     def loadModel(self):
-        return models.load_model('../bestModel/trainNetworkInEPS682.h5')
+        # return models.load_model('../bestModel/trainNetworkInEPS682.h5')
+        return models.load_model('../bestModel/trainNetworkInEPS788.h5')
 
 
     def onStateChange(self, oldState, action, newState):
